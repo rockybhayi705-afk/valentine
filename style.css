@@ -1,0 +1,110 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: radial-gradient(circle at top, #2b1055, #000);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+  color: #fff;
+}
+
+.container {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(15px);
+  padding: 30px 20px;
+  width: 90%;
+  max-width: 350px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 0 40px rgba(255,0,120,0.4);
+  z-index: 2;
+}
+
+h1 {
+  color: #ff77aa;
+  font-size: 26px;
+}
+
+.name {
+  color: #ff4f9a;
+}
+
+p {
+  font-size: 18px;
+  color: #ffd6e8;
+}
+
+.buttons {
+  margin-top: 20px;
+  position: relative;
+  height: 120px;
+}
+
+button {
+  padding: 12px 25px;
+  font-size: 18px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  position: absolute;
+}
+
+#yesBtn {
+  background: linear-gradient(45deg, #ff2f92, #ff77aa);
+  color: white;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  box-shadow: 0 0 20px rgba(255,50,150,0.8);
+}
+
+#noBtn {
+  background-color: #444;
+  color: #ccc;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#message {
+  margin-top: 20px;
+  color: #ff9ecb;
+  font-size: 20px;
+}
+
+/* ❤️ Floating hearts */
+.hearts span {
+  position: absolute;
+  bottom: -20px;
+  font-size: 20px;
+  animation: floatUp 6s linear infinite;
+}
+
+@keyframes floatUp {
+  to {
+    transform: translateY(-110vh) scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* 🎉 Confetti */
+.confetti {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  top: -10px;
+  animation: fall 3s linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: 0;
+  }
+}
