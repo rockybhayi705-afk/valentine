@@ -35,6 +35,8 @@ h1 { color: #ff77aa; }
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  position: relative;
+  z-index: 10;    /* 🔑 ensures buttons are on top */
   gap: 12px;
   margin-top: 15px;
 }
