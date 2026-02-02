@@ -130,7 +130,7 @@ button {
   position: relative;
   width: 100%;
   max-width: 280px;
-  height: 360px;
+  height: 420px;
   margin: 20px auto;
   display: none;
   border-radius: 18px;
@@ -141,7 +141,8 @@ button {
   position: absolute;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;   /* ✅ shows full photo */
+  background: black;     /* nice border for empty space */
   opacity: 0;
   transition: opacity 1.5s ease;
 }
