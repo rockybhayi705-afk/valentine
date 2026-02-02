@@ -170,3 +170,12 @@ button {
   transform: translateX(-50%);
   top: 0;
 }
+
+#finalText {
+  margin-top: 20px;
+  font-size: 20px;
+  color: #ffd6e8;
+  text-align: center;
+  min-height: 60px;
+  white-space: pre-line;
+}
