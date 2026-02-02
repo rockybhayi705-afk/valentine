@@ -23,9 +23,11 @@ h1 { color: #ff77aa; }
 .name { color: #ff4f9a; }
 
 #questionBox {
+  font-family: 'Poppins', sans-serif;
   font-size: 18px;
   color: #ffd6e8;
-  min-height: 50px;
+  line-height: 1.6;
+  margin-top: 10px;
 }
 
 /* Answer buttons */
@@ -38,13 +40,9 @@ h1 { color: #ff77aa; }
 }
 
 .answerBtn {
-  padding: 10px 20px;
-  border-radius: 20px;
-  border: none;
+  font-family: 'Poppins', sans-serif;
   font-size: 16px;
-  background: #ff77aa;
-  color: white;
-  cursor: pointer;
+  font-weight: 500;
 }
 
 /* Final buttons */
@@ -167,10 +165,27 @@ button {
 }
 
 #finalText {
-  margin-top: 20px;
-  font-size: 20px;
-  color: #ffd6e8;
+  margin-top: 30px;
+  font-family: 'Great Vibes', cursive;
+  font-size: 30px;              /* elegant, not too big */
+  color: #ffe1ee;
   text-align: center;
-  min-height: 60px;
+  line-height: 1.8;
+  letter-spacing: 1px;
   white-space: pre-line;
+}
+
+#finalText {
+  animation: fadeInText 1.5s ease;
+}
+
+@keyframes fadeInText {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
