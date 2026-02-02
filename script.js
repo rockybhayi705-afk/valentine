@@ -1,22 +1,55 @@
+const questionBox = document.getElementById("questionBox");
+const answers = document.getElementById("answers");
+const finalButtons = document.getElementById("finalButtons");
 const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
 const message = document.getElementById("message");
-const heartsContainer = document.querySelector(".hearts");
+const hearts = document.querySelector(".hearts");
+const music = document.getElementById("bgMusic");
 
-// YES button
-yesBtn.addEventListener("click", () => {
-  message.innerHTML = "Yayyy! 💖 You just made my world complete 🌙✨";
-  yesBtn.disabled = true;
-  launchConfetti();
+const questions = [
+  "Who smiles more when we're together? 😊",
+  "Who misses the other more? 💕",
+  "Who should plan our next date? 🌙",
+  "Who is luckier to have the other? 😌"
+];
+
+let qIndex = 0;
+questionBox.innerHTML = questions[qIndex];
+
+// Answer click → next question
+document.querySelectorAll(".answerBtn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    launchConfetti();
+    qIndex++;
+
+    if (qIndex < questions.length) {
+      questionBox.innerHTML = questions[qIndex];
+    } else {
+      // FINAL QUESTION
+      answers.style.display = "none";
+      questionBox.innerHTML = "Will you be my Valentine? 💍";
+      finalButtons.classList.remove("hidden");
+    }
+  });
 });
 
-// NO button never clicks 😈
-noBtn.addEventListener("mouseenter", moveButton);
-noBtn.addEventListener("touchstart", moveButton);
+// YES → slideshow
+yesBtn.addEventListener("click", () => {
+  music.play();
+  message.innerHTML = "Forever starts with us 💖";
+  launchConfetti();
+  startSlideshow();
+  yesBtn.disabled = true;
+});
 
-function moveButton() {
-  const x = Math.random() * 220 - 110;
-  const y = Math.random() * 220 - 110;
+// NO button runs away 😈
+noBtn.addEventListener("mouseenter", moveNo);
+noBtn.addEventListener("touchstart", moveNo);
+
+function moveNo() {
+  const x = Math.random() * 240 - 120;
+  const y = Math.random() * 240 - 120;
   noBtn.style.transform = `translate(${x}px, ${y}px)`;
 }
 
@@ -25,21 +58,33 @@ setInterval(() => {
   const heart = document.createElement("span");
   heart.innerHTML = "❤️";
   heart.style.left = Math.random() * 100 + "vw";
-  heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
-  heartsContainer.appendChild(heart);
+  hearts.appendChild(heart);
   setTimeout(() => heart.remove(), 7000);
 }, 300);
 
-// 🎉 Confetti explosion
+// Confetti
 function launchConfetti() {
-  for (let i = 0; i < 80; i++) {
-    const confetti = document.createElement("div");
-    confetti.classList.add("confetti");
-    confetti.style.left = Math.random() * 100 + "vw";
-    confetti.style.backgroundColor =
-      ["#ff2f92", "#ff77aa", "#ffd6e8", "#ffffff"][Math.floor(Math.random() * 4)];
-    confetti.style.animationDuration = Math.random() * 2 + 2 + "s";
-    document.body.appendChild(confetti);
-    setTimeout(() => confetti.remove(), 3000);
+  for (let i = 0; i < 40; i++) {
+    const c = document.createElement("div");
+    c.className = "confetti";
+    c.style.left = Math.random() * 100 + "vw";
+    c.style.backgroundColor =
+      ["#ff2f92", "#ff77aa", "#ffd6e8", "#fff"][Math.floor(Math.random() * 4)];
+    document.body.appendChild(c);
+    setTimeout(() => c.remove(), 3000);
   }
+}
+
+// Slideshow
+const slides = document.querySelectorAll(".slide");
+const slideshow = document.getElementById("slideshow");
+let current = 0;
+
+function startSlideshow() {
+  slideshow.style.display = "block";
+  setInterval(() => {
+    slides[current].classList.remove("active");
+    current = (current + 1) % slides.length;
+    slides[current].classList.add("active");
+  }, 3000);
 }
