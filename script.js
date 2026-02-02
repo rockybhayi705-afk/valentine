@@ -82,9 +82,35 @@ let current = 0;
 
 function startSlideshow() {
   slideshow.style.display = "block";
-  setInterval(() => {
+  let slideCount = 0;
+
+  const slider = setInterval(() => {
     slides[current].classList.remove("active");
-    current = (current + 1) % slides.length;
+    current++;
+    slideCount++;
+
+    if (current >= slides.length) {
+      clearInterval(slider);
+      setTimeout(typeFinalMessage, 1000); // ✍️ start typing
+      return;
+    }
+
     slides[current].classList.add("active");
   }, 3000);
+}
+
+const finalMessage = 
+  "You didn’t just say YES… 💖\n" +
+  "You chose us.\n\n" +
+  "Happy Valentine’s Day 🌹✨";
+
+let textIndex = 0;
+
+function typeFinalMessage() {
+  const textEl = document.getElementById("finalText");
+  if (textIndex < finalMessage.length) {
+    textEl.innerHTML += finalMessage.charAt(textIndex);
+    textIndex++;
+    setTimeout(typeFinalMessage, 80);
+  }
 }
