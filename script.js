@@ -151,6 +151,13 @@ function typeFinalMessage() {
       setTimeout(type, 45); // ✍️ smooth romantic speed
     }
   }
+  else {
+  document.getElementById("nextPageBtn").style.display = "block";
+}
+
+  document.getElementById("nextPageBtn").addEventListener("click", () => {
+  window.location.href = "valentine.html";
+});
 
   type();
 }
