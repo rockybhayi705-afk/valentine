@@ -1,3 +1,9 @@
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("answers").style.display = "flex";
+  document.getElementById("finalButtons").classList.add("hidden");
+  document.getElementById("nextPageBtn").style.display = "none";
+});
+
 const questionBox = document.getElementById("questionBox");
 const answers = document.getElementById("answers");
 const finalButtons = document.getElementById("finalButtons");
