@@ -115,9 +115,39 @@ let textIndex = 0;
 
 function typeFinalMessage() {
   const textEl = document.getElementById("finalText");
-  if (textIndex < finalMessage.length) {
-    textEl.innerHTML += finalMessage.charAt(textIndex);
-    textIndex++;
-    setTimeout(typeFinalMessage, 80);
+
+  const message =
+    "Hey Kunju ❤️\n\n" +
+    "I’ve been thinking about you a lot, and honestly, you have this effortless way of staying on my mind. " +
+    "It’s in the little things—your smile, the way you talk, the way you make me feel understood without even trying. " +
+    "You don’t just brighten my day, you make it feel complete.\n\n" +
+
+    "There’s something really special about you. You make ordinary moments feel exciting and quiet moments feel comfortable. " +
+    "Being with you feels easy, like I can be myself without pretending, and that means more to me than you know. " +
+    "And yes… I still catch myself smiling for no reason when I think about you 😏\n\n" +
+
+    "I love how you care, how you laugh, how you notice small details. I love how you somehow make my mood better just by being there. " +
+    "You’re beautiful in ways that go far beyond looks—though I won’t lie, you look amazing too 😉\n\n" +
+
+    "I’m grateful for you, for us, and for every moment we share—whether we’re talking, laughing, or just existing together. " +
+    "You make my heart feel full, calm, and a little excited all at once.\n\n" +
+
+    "Just remember this: you are wanted, you are appreciated, and you are very loved. " +
+    "And if you ever forget that, I’ll happily remind you again and again 💫\n\n" +
+
+    "Always yours ❤️";
+
+  let i = 0;
+  textEl.innerHTML = "";
+
+  function type() {
+    if (i < message.length) {
+      textEl.innerHTML += message.charAt(i);
+      i++;
+      setTimeout(type, 45); // ✍️ smooth romantic speed
+    }
   }
+
+  type();
 }
+
