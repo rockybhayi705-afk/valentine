@@ -189,3 +189,17 @@ button {
     transform: translateY(0);
   }
 }
+
+#nextPageBtn {
+  display: none;
+  margin: 30px auto 10px;
+  padding: 12px 30px;
+  border-radius: 30px;
+  border: none;
+  font-size: 18px;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(45deg, #ff2f92, #ff77aa);
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(255,50,150,0.8);
+}
