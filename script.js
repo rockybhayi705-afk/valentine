@@ -143,6 +143,10 @@ function typeFinalMessage() {
   function type() {
     if (i < message.length) {
       textEl.innerHTML += message.charAt(i);
+      window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: "smooth"
+          });
       i++;
       setTimeout(type, 45); // ✍️ smooth romantic speed
     }
