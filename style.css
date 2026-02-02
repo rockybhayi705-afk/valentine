@@ -3,8 +3,8 @@
 body {
   margin: 0;
   background: radial-gradient(circle at top, #2b1055, #000);
-  font-family: Poppins, sans-serif;
-  overflow-y: auto;     /* ✅ allow scrolling */
+  font-family: 'Poppins', sans-serif;
+  overflow-y: auto;
 }
 
 .container {
