@@ -3,24 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>💖 My Valentine</title>
+  <title>💖 For You</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<audio autoplay loop>
+<audio id="bgMusic" loop>
   <source src="Tujh Mein Khoya Rahoon Main.mp3" type="audio/mpeg">
 </audio>
 
 <div class="hearts"></div>
 
 <div class="container">
-  <h1>Hey <span class="name">Kunjoose ❤️</span></h1>
-  <p>Will you be my Valentine?</p>
+  <h1>Haaai <span class="name">KUNJOOSE ❤️</span></h1>
+
+  <p id="questionBox"></p>
 
   <div class="buttons">
     <button id="yesBtn">Yes 💕</button>
     <button id="noBtn">No 🙈</button>
+  </div>
+
+  <div id="slideshow">
+    <img src="photo1.jpg" class="slide active">
+    <img src="photo2.jpg" class="slide">
+    <img src="photo3.jpg" class="slide">
+    <img src="photo4.jpg" class="slide">
+    <img src="photo5.jpg" class="slide">
   </div>
 
   <h2 id="message"></h2>
