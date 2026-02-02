@@ -1,6 +1,4 @@
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
@@ -9,7 +7,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Poppins', sans-serif;
+  font-family: Poppins, sans-serif;
   overflow: hidden;
   color: #fff;
 }
@@ -17,33 +15,52 @@ body {
 .container {
   background: rgba(255,255,255,0.08);
   backdrop-filter: blur(15px);
-  padding: 30px 20px;
+  padding: 25px;
   width: 90%;
-  max-width: 350px;
+  max-width: 360px;
   border-radius: 20px;
   text-align: center;
   box-shadow: 0 0 40px rgba(255,0,120,0.4);
   z-index: 2;
 }
 
-h1 {
-  color: #ff77aa;
-  font-size: 26px;
-}
+h1 { color: #ff77aa; }
+.name { color: #ff4f9a; }
 
-.name {
-  color: #ff4f9a;
-}
-
-p {
+#questionBox {
   font-size: 18px;
   color: #ffd6e8;
+  min-height: 50px;
 }
 
+/* Answer buttons */
+#answers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.answerBtn {
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+  font-size: 16px;
+  background: #ff77aa;
+  color: white;
+  cursor: pointer;
+}
+
+/* Final buttons */
 .buttons {
   margin-top: 20px;
   position: relative;
-  height: 120px;
+  height: 100px;
+}
+
+.hidden {
+  display: none;
 }
 
 button {
@@ -61,11 +78,10 @@ button {
   left: 50%;
   transform: translateX(-50%);
   bottom: 0;
-  box-shadow: 0 0 20px rgba(255,50,150,0.8);
 }
 
 #noBtn {
-  background-color: #444;
+  background: #444;
   color: #ccc;
   top: 0;
   left: 50%;
@@ -73,12 +89,12 @@ button {
 }
 
 #message {
-  margin-top: 20px;
+  margin-top: 15px;
   color: #ff9ecb;
   font-size: 20px;
 }
 
-/* ❤️ Floating hearts */
+/* Hearts */
 .hearts span {
   position: absolute;
   bottom: -20px;
@@ -93,7 +109,7 @@ button {
   }
 }
 
-/* 🎉 Confetti */
+/* Confetti */
 .confetti {
   position: fixed;
   width: 10px;
@@ -107,4 +123,29 @@ button {
     transform: translateY(110vh) rotate(720deg);
     opacity: 0;
   }
+}
+
+/* Slideshow */
+#slideshow {
+  position: relative;
+  width: 100%;
+  max-width: 280px;
+  height: 360px;
+  margin: 20px auto;
+  display: none;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.5s ease;
+}
+
+.slide.active {
+  opacity: 1;
 }
