@@ -9,9 +9,13 @@ const answers = document.getElementById("answers");
 const finalButtons = document.getElementById("finalButtons");
 const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
-const message = document.getElementById("message");
+const messageBox = document.getElementById("message");
 const hearts = document.querySelector(".hearts");
 const music = document.getElementById("bgMusic");
+const slideshow = document.getElementById("slideshow");
+const slides = document.querySelectorAll(".slide");
+const finalText = document.getElementById("finalText");
+const nextBtn = document.getElementById("nextPageBtn");
 
 const questions = [
   "Who smiles more when we're together? 😊",
@@ -23,7 +27,8 @@ const questions = [
 let qIndex = 0;
 questionBox.innerHTML = questions[qIndex];
 
-// Answer click → next question
+
+// 👉 ANSWER BUTTONS
 document.querySelectorAll(".answerBtn").forEach(btn => {
   btn.addEventListener("click", () => {
     launchConfetti();
@@ -32,7 +37,6 @@ document.querySelectorAll(".answerBtn").forEach(btn => {
     if (qIndex < questions.length) {
       questionBox.innerHTML = questions[qIndex];
     } else {
-      // FINAL QUESTION
       answers.style.display = "none";
       questionBox.innerHTML = "Will you be my Valentine? 💍";
       finalButtons.classList.remove("hidden");
@@ -40,16 +44,18 @@ document.querySelectorAll(".answerBtn").forEach(btn => {
   });
 });
 
-// YES → slideshow
+
+// 👉 YES BUTTON
 yesBtn.addEventListener("click", () => {
   music.play();
-  message.innerHTML = "Forever starts with us 💖";
+  messageBox.innerHTML = "Forever starts with us 💖";
   launchConfetti();
   startSlideshow();
   yesBtn.disabled = true;
 });
 
-// NO button runs away 😈
+
+// 👉 NO BUTTON ESCAPE
 noBtn.addEventListener("mouseenter", moveNo);
 noBtn.addEventListener("touchstart", moveNo);
 
@@ -59,7 +65,8 @@ function moveNo() {
   noBtn.style.transform = `translate(${x}px, ${y}px)`;
 }
 
-// Floating hearts
+
+// ❤️ FLOATING HEARTS (NON-BLOCKING)
 setInterval(() => {
   const heart = document.createElement("span");
   heart.innerHTML = "❤️";
@@ -68,7 +75,8 @@ setInterval(() => {
   setTimeout(() => heart.remove(), 7000);
 }, 300);
 
-// Confetti
+
+// 🎉 CONFETTI
 function launchConfetti() {
   for (let i = 0; i < 40; i++) {
     const c = document.createElement("div");
@@ -81,13 +89,10 @@ function launchConfetti() {
   }
 }
 
-// Slideshow
-const slides = document.querySelectorAll(".slide");
-const slideshow = document.getElementById("slideshow");
-let current = 0;
 
+// 📸 SLIDESHOW
 function startSlideshow() {
-  slideshow.style.display = "flex";   // show slideshow
+  slideshow.style.display = "flex";
   let index = 0;
 
   slides.forEach(s => s.classList.remove("active"));
@@ -97,14 +102,9 @@ function startSlideshow() {
     slides[index].classList.remove("active");
     index++;
 
-    // ✅ END OF SLIDESHOW
     if (index >= slides.length) {
       clearInterval(slider);
-
-      // hide slideshow completely
       slideshow.style.display = "none";
-
-      // start typing after slideshow
       setTimeout(typeFinalMessage, 500);
       return;
     }
@@ -112,17 +112,11 @@ function startSlideshow() {
     slides[index].classList.add("active");
   }, 3000);
 }
-const finalMessage = 
-  "You didn’t just say YES… 💖\n" +
-  "You chose us.\n\n" +
-  "Happy Valentine’s Day 🌹✨";
 
-let textIndex = 0;
 
+// ✍️ TYPEWRITER MESSAGE
 function typeFinalMessage() {
-  const textEl = document.getElementById("finalText");
-
-  const message =
+  const text =
     "Hey Kunju ❤️\n\n" +
     "I’ve been thinking about you a lot, and honestly, you have this effortless way of staying on my mind. " +
     "It’s in the little things—your smile, the way you talk, the way you make me feel understood without even trying. " +
@@ -143,28 +137,25 @@ function typeFinalMessage() {
 
     "Always yours ❤️";
 
+  finalText.innerHTML = "";
   let i = 0;
-  textEl.innerHTML = "";
 
   function type() {
-    if (i < message.length) {
-      textEl.innerHTML += message.charAt(i);
-      window.scrollTo({
-        top: document.body.scrollHeight,
-        behavior: "smooth"
-          });
+    if (i < text.length) {
+      finalText.innerHTML += text.charAt(i);
+      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
       i++;
-      setTimeout(type, 45); // ✍️ smooth romantic speed
+      setTimeout(type, 45);
+    } else {
+      nextBtn.style.display = "block";
     }
   }
-  else {
-  document.getElementById("nextPageBtn").style.display = "block";
-}
-
-  document.getElementById("nextPageBtn").addEventListener("click", () => {
-  window.location.href = "valentine.html";
-});
 
   type();
 }
 
+
+// 👉 NEXT PAGE BUTTON
+nextBtn.addEventListener("click", () => {
+  window.location.href = "valentine.html";
+});
