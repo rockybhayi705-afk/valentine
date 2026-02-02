@@ -69,7 +69,6 @@ button {
   border: none;
   border-radius: 30px;
   cursor: pointer;
-  position: absolute;
 }
 
 #yesBtn {
@@ -149,4 +148,25 @@ button {
 
 .slide.active {
   opacity: 1;
+}
+
+/* Final YES / NO positioning only */
+#finalButtons {
+  position: relative;
+  height: 100px;
+  margin-top: 20px;
+}
+
+#yesBtn {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+}
+
+#noBtn {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
 }
