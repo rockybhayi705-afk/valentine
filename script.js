@@ -81,24 +81,31 @@ const slideshow = document.getElementById("slideshow");
 let current = 0;
 
 function startSlideshow() {
-  slideshow.style.display = "block";
-  let slideCount = 0;
+  slideshow.style.display = "flex";   // show slideshow
+  let index = 0;
+
+  slides.forEach(s => s.classList.remove("active"));
+  slides[0].classList.add("active");
 
   const slider = setInterval(() => {
-    slides[current].classList.remove("active");
-    current++;
-    slideCount++;
+    slides[index].classList.remove("active");
+    index++;
 
-    if (current >= slides.length) {
+    // ✅ END OF SLIDESHOW
+    if (index >= slides.length) {
       clearInterval(slider);
-      setTimeout(typeFinalMessage, 1000); // ✍️ start typing
+
+      // hide slideshow completely
+      slideshow.style.display = "none";
+
+      // start typing after slideshow
+      setTimeout(typeFinalMessage, 500);
       return;
     }
 
-    slides[current].classList.add("active");
+    slides[index].classList.add("active");
   }, 3000);
 }
-
 const finalMessage = 
   "You didn’t just say YES… 💖\n" +
   "You chose us.\n\n" +
